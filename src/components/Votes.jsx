@@ -4,21 +4,36 @@ import { useState } from "react";
 export default function Votes ({article_id, votes}) {
 
     const [optimisticVote, setOptimisticVote] = useState(0);
+    const [errorMsg, setErrorMsg] = useState("");
 
     let voteCount = 0
     const incrementVote = () => {
         voteCount++;
-        patchVotes (article_id, voteCount);
-        setOptimisticVote((currOptimisticVote) => {
-            return currOptimisticVote + 1;
+        patchVotes (article_id, voteCount).then(() => {
+            setErrorMsg("");
+            setOptimisticVote((currOptimisticVote) => {
+                return currOptimisticVote + 1;
+            });
         })
+        .catch((err) => {
+            if (err.response) {
+                setErrorMsg("Request failed...")
+            }
+        });
     }
     const decreaseVote = () => {
         voteCount--;
-        patchVotes (article_id, voteCount);
-        setOptimisticVote((currOptimisticVote) => {
-            return currOptimisticVote - 1;
+        patchVotes (article_id, voteCount).then(() => {
+            setErrorMsg("");
+            setOptimisticVote((currOptimisticVote) => {
+                return currOptimisticVote - 1;
+            });
         })
+        .catch((err) => {
+            if (err.response) {
+                setErrorMsg("Request failed...")
+            }
+        });
     }
 
     return (
@@ -36,6 +51,7 @@ export default function Votes ({article_id, votes}) {
             >
                 DownVote
             </button>
+            <p className="article__error">{errorMsg}</p>
         </div>
     )
 

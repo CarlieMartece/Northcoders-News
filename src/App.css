@@ -16,7 +16,7 @@ a:link, a:visited {
 .article__votes {
   display: grid;
   grid-column-gap: 10px;
-  grid-template-columns: 80px repeat(2, 80px);
+  grid-template-columns: 80px repeat(3, 80px);
   grid-template-rows: 40px;
 }
 
@@ -32,6 +32,11 @@ a:link, a:visited {
 .article__votes-downvote { 
   grid-area: 1 / 3 / 2 / 4; 
   margin-top: 20px;
+}
+
+.article__error {
+  color: gray;
+  grid-area: 1 / 4 / 2 / 5; 
 }
 
 li {

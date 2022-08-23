@@ -25,7 +25,5 @@ export const fetchSingleArticle = (article_id) => {
 }
 
 export const patchVotes = (article_id, count) => {
-    return api.patch(`/articles/${article_id}`, { inc_votes: count }).then((res) => {
-        return res.data.article.votes
-    })
+    return api.patch(`/articles/${article_id}`, { inc_votes: count });
 }
