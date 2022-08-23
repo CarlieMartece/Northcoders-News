@@ -41,7 +41,7 @@ export default function SingleArticle () {
                 <p className="main__info">By {author} on {day}/{month}/{year}</p>
                 <p>{body}</p>
                 <section>
-                    <Votes votes={votes} />
+                    <Votes votes={votes} article_id={collection.article.article_id} />
                     <div className="article__comments">
                         <h4>Comments: {comment_count}</h4>
                     </div>
