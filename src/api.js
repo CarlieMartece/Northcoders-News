@@ -1,3 +1,8 @@
+import axios from "axios";
+const api = axios.create({
+    baseURL: "https://nookas-news.herokuapp.com/api"
+}) 
+
 export const fetchArticles = () => {
     return fetch('https://nookas-news.herokuapp.com/api/articles')
         .then((res) => {
@@ -17,4 +22,8 @@ export const fetchSingleArticle = (article_id) => {
     .then((res) => {
         return res.json();
     });
+}
+
+export const patchVotes = () => {
+
 }
