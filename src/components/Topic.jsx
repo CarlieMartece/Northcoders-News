@@ -1,20 +1,21 @@
-import ArticleCard from "./ArticleCard";
-import { fetchArticles } from "../api";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { fetchTopic } from "../api";
+import ArticleCard from "./ArticleCard";
 
+export default function Topic () {
 
-export default function AllArticles () {
-
+    const { topic } = useParams();
     const [collection, setCollection] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(()=>{
-        fetchArticles()
-          .then((articles) => {
-            setCollection(articles);
+        fetchTopic(topic)
+          .then((items) => {
+            setCollection(items);
             setIsLoading(false);
           });
-    },[]);
+    },[topic]);
 
     return (
         <main>
@@ -22,14 +23,7 @@ export default function AllArticles () {
             <>
             <ul className="main__list">
                 {collection.articles.map((article)=>{
-                    let listImg = <></>
-                    if (article.topic === "coding") {
-                        listImg = <img alt="coding" src={require("../images/coding-icon-white.png")} />
-                    } else if (article.topic === "football") {
-                        listImg = <img alt="football" src={require("../images/football-icon-white.png")} />
-                    } else if (article.topic === "cooking") {
-                        listImg = <img alt="cooking" src={require("../images/cooking-icon-white.png")} />
-                    }
+                    let listImg = <img alt={topic} src={require(`../images/${topic}-icon-white.png`)} />
 
                     return (
                         <ArticleCard 
