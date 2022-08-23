@@ -13,6 +13,16 @@ a:link, a:visited {
   text-decoration: none;
 }
 
+.article__votes {
+  width: 90px;
+}
+
+.article__votes, .article__comments {
+  display: inline;
+  float: left;
+  margin-top: 20px;
+}
+
 li {
   list-style: none;
 }
@@ -22,6 +32,16 @@ main {
   grid-area: 3 / 1 / 4 / 3;
   overflow: scroll;
   padding: 10px;
+}
+
+.main__article {
+  padding: 0 10px;
+  text-align: justify;
+}
+
+.main__info {
+  font-style: italic;
+  margin-bottom: 20px;
 }
 
 .main__list-card {

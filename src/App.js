@@ -5,6 +5,7 @@ import UserBar from "./components/UserBar";
 import NavBar from "./components/NavBar";
 import AllArticles from "./components/AllArticles.jsx";
 import Topic from "./components/Topic";
+import SingleArticle from "./components/SingleArticle";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AllArticles />} />
           <Route path="/articles/topics/:topic" element={<Topic />} />
+          <Route path="/articles/:article_id" element={<SingleArticle />} />
         </Routes>
       </div>
     </BrowserRouter>
