@@ -11,3 +11,10 @@ export const fetchTopic = (topic) => {
             return res.json();
         });
 };
+
+export const fetchSingleArticle = (article_id) => {
+    return fetch(`https://nookas-news.herokuapp.com/api/articles/${article_id}`)
+    .then((res) => {
+        return res.json();
+    });
+}

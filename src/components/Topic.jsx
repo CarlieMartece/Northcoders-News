@@ -28,6 +28,7 @@ export default function Topic () {
                     return (
                         <ArticleCard 
                             key={article.article_id}
+                            articleId={article.article_id}
                             title={article.title}
                             author={article.author}
                             created={article.created_at}
