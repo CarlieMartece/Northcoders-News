@@ -4,24 +4,24 @@ const api = axios.create({
 }) 
 
 export const fetchArticles = () => {
-    return fetch('https://nookas-news.herokuapp.com/api/articles')
+    return api.get('/articles')
         .then((res) => {
-            return res.json();
+            return res.data;
         });
 };
 
 export const fetchTopic = (topic) => {
-    return fetch(`https://nookas-news.herokuapp.com/api/articles?topic=${topic}`)
+    return api.get(`/articles?topic=${topic}`)
         .then((res) => {
-            return res.json();
+            return res.data;
         });
 };
 
 export const fetchSingleArticle = (article_id) => {
-    return fetch(`https://nookas-news.herokuapp.com/api/articles/${article_id}`)
-    .then((res) => {
-        return res.json();
-    });
+    return api.get(`/articles/${article_id}`)
+        .then((res) => {
+            return res.data;
+        });
 }
 
 export const patchVotes = (article_id, count) => {
