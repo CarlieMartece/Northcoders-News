@@ -13,14 +13,19 @@ a:link, a:visited {
   text-decoration: none;
 }
 
-.article__votes {
-  width: 90px;
+.article__votes, .article__comments {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  grid-template-rows: 30px;
 }
 
-.article__votes, .article__comments {
-  display: inline;
-  float: left;
-  margin-top: 20px;
+.article__votes h4 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.article__votes p { 
+  grid-area: 1 / 2 / 2 / 3; 
+  margin-top: 21px;
 }
 
 li {
