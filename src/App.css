@@ -13,6 +13,32 @@ a:link, a:visited {
   text-decoration: none;
 }
 
+.article__comments {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: 130px 120px;
+  grid-template-rows: 40px;
+}
+
+.article__comments-count, .article__votes-count {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.article__comments-view, .article__votes-upvote {
+  grid-area: 1 / 2 / 2 / 3; 
+  margin-top: 20px;
+}
+
+.article__comments-all h4 {
+  font-style: italic;
+  margin: 20px 0 5px 0;
+}
+
+.article__comments-all p {
+  display: block;
+  float: none;
+}
+
 .article__votes {
   display: grid;
   grid-column-gap: 10px;
@@ -20,21 +46,13 @@ a:link, a:visited {
   grid-template-rows: 40px;
 }
 
-.article__votes-count {
-  grid-area: 1 / 1 / 2 / 2;
-}
-
-.article__votes-upvote { 
-  grid-area: 1 / 2 / 2 / 3; 
-  margin-top: 20px;
-}
 
 .article__votes-downvote { 
   grid-area: 1 / 3 / 2 / 4; 
   margin-top: 20px;
 }
 
-.article__error {
+.article__votes-error {
   color: gray;
   grid-area: 1 / 4 / 2 / 5; 
 }
@@ -46,7 +64,8 @@ li {
 main {
   background-color: #3f1882;
   grid-area: 3 / 1 / 4 / 3;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   padding: 10px;
 }
 
