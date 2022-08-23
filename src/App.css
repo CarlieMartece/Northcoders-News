@@ -1,38 +1,98 @@
 .App {
+  background-color: black;
+  color: white;
+  display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto) 1fr;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a:link, a:visited {
+  color:aliceblue;
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+li {
+  list-style: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+main {
+  background-color: #3f1882;
+  grid-area: 3 / 1 / 4 / 3;
+  overflow: scroll;
+  padding: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.main__list-card {
+  border: 1px solid white;
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: 75px 1fr;
+  grid-template-rows: 55px 25px;
+  padding: 5px;
+  margin: 10px auto 20px auto;
+  text-align: left;
+  width: 90vw;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.main__list img {
+  grid-area: 1 / 1 / 3 / 2;
+  margin: 5px 10px 10px 5px;
+  width: 60px;
+}
+
+.main__list-info {
+  font-style: italic;
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.main__list-title {
+  color:aqua;
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.main__list-title h4, p {
+  margin: 0;
+}
+
+.nav__link {
+  margin: 10px;
+}
+
+.nav-topics {
+  background-color: rebeccapurple;
+  grid-area: 2 / 1 / 3 / 3;
+  padding-bottom: 5px
+}
+
+.nav-topics h2 {
+  margin: 10px
+}
+
+.title {
+  background-color: midnightblue;
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+ul {
+  margin: auto;
+  padding: 0;
+}
+
+.user {
+  background-color: #450458;
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+
+@media screen and (min-width: 800px) {
+  .main__list-card {
+    display: inline;
+    float: left;
+    height: 140px;
+    padding: 5px;
+    margin: 20px;
+    width: 330px;
   }
 }
