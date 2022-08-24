@@ -125,6 +125,10 @@ main {
   margin: 10px
 }
 
+.nav-topics-selector {
+  height: 20px;
+}
+
 .title {
   background-color: midnightblue;
   grid-area: 1 / 1 / 2 / 2;
