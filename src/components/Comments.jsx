@@ -6,6 +6,7 @@ export default function Comments ({ article_id, comment_count }) {
 
     const [commentArray, setCommentArray] = useState();
     const [isLoading, setIsLoading] = useState(true);
+    const [newComment ,setNewComment] = useState('');
 
     const loadComments = () => {
         getComments(article_id).then((comments)=>{
@@ -27,6 +28,10 @@ export default function Comments ({ article_id, comment_count }) {
         day = Number(date.$D);
         month = Number(date.$M) + 1;
         year = Number(date.$y);
+    }
+
+    const handleCommentChange = (event) => {
+        setNewComment(event.target.value);
     }
 
 
@@ -63,6 +68,19 @@ export default function Comments ({ article_id, comment_count }) {
             </button>
             </>
             }
+        </section>
+        <section className="article__comments-form">
+            <form>
+            <label htmlFor="comment-body">Add Comment:</label>
+                <textarea 
+                    id="comment-body"
+                    name="comment-body"
+                    placeholder="Your comment..."
+                    onChange={(event) => {handleCommentChange(event)}}
+                    >
+            </textarea>
+            <input type="submit" value="Submit Comment"></input>
+            </form>
         </section>
         </>
     )
