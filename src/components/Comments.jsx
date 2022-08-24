@@ -4,38 +4,55 @@ const dayjs = require('dayjs');
 
 export default function Comments ({ article_id, comment_count }) {
 
-    const [commentArray, setCommentArray] = useState();
-    const [isLoading, setIsLoading] = useState(true);
-    const [newComment ,setNewComment] = useState('');
+    const initialValues = {
+        commentObj: [],
+        isLoading: true,
+        newComment: undefined,
+        errorMsg: '',
+        submitMsg: ''
+    };
+    const [values, setValues] = useState(initialValues);
 
     const loadComments = () => {
         getComments(article_id).then((comments)=>{
-            setCommentArray(comments);
-            setIsLoading(false);
+            setValues({                              
+                ...values,
+                commentObj: comments,
+                isLoading: false,          
+            });
         });
     };
 
     const hideComments = () => {
-        setIsLoading(true);
-        setCommentArray("")
-    }
-
-    let date = {};
-    let day, month, year = 0;
-
-    if (!isLoading) {
-        date = dayjs(commentArray.comments.created_at);
-        day = Number(date.$D);
-        month = Number(date.$M) + 1;
-        year = Number(date.$y);
+        setValues({                              
+            ...values,
+            isLoading: true, 
+            commentObj: "",
+        });
     }
 
     const handleCommentChange = (event) => {
-        setNewComment(event.target.value);
+        setValues({ ...values, newComment: event.target.value });
     }
 
-    const handleSubmit = () => {
-        postComment(article_id, "jessjelly", newComment)
+    const handleSubmit = (event) => {
+        
+        if (values.newComment === undefined) {
+            event.preventDefault();
+            setValues({                              
+                ...values,
+                submitMsg: "",
+                errorMsg: "Cannot send blank comment!"
+            });
+        } else {
+            postComment(article_id, "jessjelly", values.newComment);
+            event.preventDefault();
+            setValues({                              
+                ...values,
+                errorMsg: "",
+                submitMsg: "Comment added"
+            });
+        }
     }
 
 
@@ -51,10 +68,14 @@ export default function Comments ({ article_id, comment_count }) {
             </button>
         </section>
         <section className="article__comments--loaded">
-            {isLoading? <></> :
+            {values.isLoading? <></> :
             <>
             <ul className="comment__list">
-                {commentArray.comments.map((comment)=>{
+                {values.commentObj.comments.map((comment)=>{
+                    const date = dayjs(comment.created_at);
+                    const day = Number(date.$D);
+                    const month = Number(date.$M) + 1;
+                    const year = Number(date.$y);
                     return (
                         <li className="article__comments-all" key={comment.comment_id}>
                             <h4>{comment.author}, {day}/{month}/{year}</h4>
@@ -73,8 +94,8 @@ export default function Comments ({ article_id, comment_count }) {
             </>
             }
         </section>
-        <section className="article__comments-form">
-            <form onSubmit={handleSubmit}>
+        <section className="article__comment-form">
+        <form onSubmit={(event) => handleSubmit(event)}>
             <label htmlFor="comment-body">Add Comment:</label>
                 <textarea 
                     id="comment-body"
@@ -85,6 +106,7 @@ export default function Comments ({ article_id, comment_count }) {
             </textarea>
             <input type="submit" value="Submit Comment"></input>
             </form>
+            <p className="article__comment-submitted">{values.errorMsg}{values.submitMsg}</p>
         </section>
         </>
     )
