@@ -3,7 +3,7 @@ import { fetchArticles } from "../api";
 import { useState, useEffect } from "react";
 
 
-export default function AllArticles () {
+export default function HomeArticles () {
 
     const [collection, setCollection] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
