@@ -34,3 +34,10 @@ export const getComments = (article_id) => {
         return res.data;
     });
 }
+
+export const postComment = (article_id, username, body) => {
+    return api.post(`/articles/${article_id}/comments`, 
+    { username, body }).then((res) => {
+        return res.data;
+    })
+}

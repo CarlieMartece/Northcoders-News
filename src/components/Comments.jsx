@@ -1,4 +1,4 @@
-import { getComments } from "../api";
+import { getComments, postComment } from "../api";
 import { useState } from "react";
 const dayjs = require('dayjs');
 
@@ -32,6 +32,10 @@ export default function Comments ({ article_id, comment_count }) {
 
     const handleCommentChange = (event) => {
         setNewComment(event.target.value);
+    }
+
+    const handleSubmit = () => {
+        postComment(article_id, "jessjelly", newComment)
     }
 
 
@@ -70,7 +74,7 @@ export default function Comments ({ article_id, comment_count }) {
             }
         </section>
         <section className="article__comments-form">
-            <form>
+            <form onSubmit={handleSubmit}>
             <label htmlFor="comment-body">Add Comment:</label>
                 <textarea 
                     id="comment-body"
