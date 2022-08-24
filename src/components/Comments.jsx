@@ -59,8 +59,6 @@ export default function Comments ({ article_id, comment_count }) {
         }
     }
 
-    console.log(values)
-
     return (
         <>
         <section className="article__comments">
