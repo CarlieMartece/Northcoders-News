@@ -5,11 +5,12 @@ const dayjs = require('dayjs');
 export default function Comments ({ article_id, comment_count }) {
 
     const initialValues = {
-        commentObj: [],
+        optimisticComments: 0,
+        commentObj: {},
         isLoading: true,
         newComment: undefined,
         errorMsg: '',
-        submitMsg: ''
+        submitMsg: '',
     };
     const [values, setValues] = useState(initialValues);
 
@@ -45,21 +46,25 @@ export default function Comments ({ article_id, comment_count }) {
                 errorMsg: "Cannot send blank comment!"
             });
         } else {
-            postComment(article_id, "jessjelly", values.newComment);
             event.preventDefault();
-            setValues({                              
-                ...values,
-                errorMsg: "",
-                submitMsg: "Comment added"
-            });
+            postComment(article_id, "jessjelly", values.newComment).then(()=>{
+                setValues({                              
+                    ...values,
+                    errorMsg: "",
+                    submitMsg: "Comment added",
+                    optimisticComments: 1,
+                });
+                window.location.reload(false);
+            })
         }
     }
 
+    console.log(values)
 
     return (
         <>
         <section className="article__comments">
-            <h4 className="article__comments-count">Comments: {comment_count}</h4>
+            <h4 className="article__comments-count">Comments: {comment_count + values.optimisticComments}</h4>
             <button 
                 className="article__comments-view"
                 onClick={loadComments}

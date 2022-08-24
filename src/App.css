@@ -55,6 +55,10 @@ a:link, a:visited {
   width: 80%;
 }
 
+.article__comment-submitted {
+  color: gray;
+}
+
 .article__votes {
   display: grid;
   grid-column-gap: 10px;
