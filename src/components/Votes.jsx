@@ -51,7 +51,7 @@ export default function Votes ({article_id, votes}) {
             >
                 DownVote
             </button>
-            <p className="article__error">{errorMsg}</p>
+            <p className="article__votes-error">{errorMsg}</p>
         </div>
     )
 

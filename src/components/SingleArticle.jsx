@@ -1,7 +1,8 @@
+import Votes from "./Votes";
+import Comments from "./Comments";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchSingleArticle } from "../api";
-import Votes from "./Votes";
 const dayjs = require('dayjs');
 
 export default function SingleArticle () {
@@ -40,12 +41,8 @@ export default function SingleArticle () {
                 <h2>{title}</h2>
                 <p className="main__info">By {author} on {day}/{month}/{year}</p>
                 <p>{body}</p>
-                <section>
-                    <Votes votes={votes} article_id={collection.article.article_id} />
-                    <div className="article__comments">
-                        <h4>Comments: {comment_count}</h4>
-                    </div>
-                </section>
+                <Votes votes={votes} article_id={article_id} />
+                <Comments comment_count={comment_count} article_id={article_id} />
             </article>
             </>}
         </main>
