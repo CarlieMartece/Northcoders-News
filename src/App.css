@@ -43,12 +43,12 @@ a:link, a:visited {
   margin-bottom: 20px;
 }
 
-.article__comments-form label, textarea {
+.article__comment-form label, textarea {
   display: block;
   margin-bottom: 10px;
 }
 
-.article__comments-form textarea {
+.article__comment-form textarea {
   background-color: rgb(31, 0, 42);
   color: white;
   height: 80px;
