@@ -92,9 +92,8 @@ main {
 }
 
 .main__list img {
-  grid-area: 1 / 1 / 3 / 2;
+  grid-area: 1 / 1 / 2 / 2;
   margin: 5px 10px 10px 5px;
-  width: 60px;
 }
 
 .main__list-info {
@@ -105,6 +104,10 @@ main {
 .main__list-title {
   color:aqua;
   grid-area: 1 / 2 / 2 / 3;
+}
+
+.main__list-votes {
+  grid-area: 2 / 1 / 3 / 2;
 }
 
 .main__list-title h4, p {
