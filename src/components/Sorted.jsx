@@ -1,32 +1,35 @@
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { fetchTopic } from "../api";
+import { fetchSortOrder } from "../api";
 import ArticleCard from "./ArticleCard";
 
 export default function Sorted () {
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const [collection, setCollection] = useState([]);
+    const [sorted, setSorted] = useState([]);
+
     const [isLoading, setIsLoading] = useState(true);
 
     const topic = searchParams.get("topic");
+    const sort = searchParams.get("sort_by");
+    const order = searchParams.get("order_by");
 
     useEffect(()=>{
-        fetchTopic(topic)
-          .then((items) => {
-            setCollection(items);
+        fetchSortOrder(sort, order)
+          .then((articles) => {
+            setSorted(articles);
             setIsLoading(false);
-          });
-    },[topic]);
+        });
+    },[sort]);
 
     return (
-        //<p>whatever</p>
         <main>
             {isLoading? <h3>Loading...</h3> :
             <>
             <ul className="main__list">
-                {collection.articles.map((article)=>{
-                    let listImg = <img alt={topic} src={require(`../images/${topic}-icon-white.png`)} />
+                {sorted.articles
+                    .map((article)=>{
+                    let listImg = <img alt={topic} src={require(`../images/${article.topic}-icon-white.png`)} />
 
                     return (
                         <ArticleCard 

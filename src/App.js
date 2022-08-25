@@ -3,6 +3,7 @@ import './App.css';
 import Title from "./components/Title";
 import UserBar from "./components/UserBar";
 import NavBar from "./components/NavBar";
+import SortBar from "./components/SortBar";
 import HomeArticles from "./components/HomeArticles";
 import Sorted from "./components/Sorted";
 import Topic from "./components/Topic";
@@ -16,6 +17,7 @@ function App() {
         <Title />
         <UserBar />
         <NavBar />
+        <SortBar />
         <Routes>
           <Route path="/" element={<HomeArticles />} />
           <Route path="/articles" element={<Sorted />} />

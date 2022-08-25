@@ -4,7 +4,7 @@
   display: grid;
   height: 100vh;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto) 1fr;
+  grid-template-rows: repeat(3, auto) 1fr;
   text-align: center;
 }
 
@@ -63,7 +63,7 @@ li {
 
 main {
   background-color: #3f1882;
-  grid-area: 3 / 1 / 4 / 3;
+  grid-area: 4 / 1 / 5 / 3;
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 10px;
@@ -121,12 +121,23 @@ main {
   padding-bottom: 5px
 }
 
-.nav-topics h2 {
-  margin: 10px
+.nav-topics h3 {
+  margin: 5px
 }
 
-.nav-topics-selector {
-  height: 20px;
+.nav-selector {
+  font-size: large;
+}
+
+.nav-sort {
+  background-color:midnightblue;
+  grid-area: 3 / 1 / 4 / 3;
+}
+
+.nav-sort li {
+  display: inline;
+  float: left;
+  margin: 10px 5px;
 }
 
 .title {

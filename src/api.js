@@ -17,6 +17,13 @@ export const fetchTopic = (topic) => {
         });
 };
 
+export const fetchSortOrder = (sort, order) => {
+    return api.get(`/articles?sort_by=${sort}&order_by=${order}`)
+        .then((res) => {
+            return res.data;
+        });
+};
+
 export const fetchSingleArticle = (article_id) => {
     return api.get(`/articles/${article_id}`)
         .then((res) => {
