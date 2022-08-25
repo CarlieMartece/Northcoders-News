@@ -11,15 +11,18 @@ export default function Comments ({ article_id, comment_count }) {
         newComment: undefined,
         errorMsg: '',
         submitMsg: '',
+        loadHide: 'load'
     };
     const [values, setValues] = useState(initialValues);
 
     const loadComments = () => {
         getComments(article_id).then((comments)=>{
+            const revComments = comments.comments.reverse();
             setValues({                              
                 ...values,
-                commentObj: comments,
-                isLoading: false,          
+                commentObj: {revComments},
+                isLoading: false,
+                loadHide: 'hide'       
             });
         });
     };
@@ -29,6 +32,7 @@ export default function Comments ({ article_id, comment_count }) {
             ...values,
             isLoading: true, 
             commentObj: "",
+            loadHide: 'load'
         });
     }
 
@@ -55,26 +59,33 @@ export default function Comments ({ article_id, comment_count }) {
                     optimisticComments: 1,
                 });
                 window.location.reload(false);
-            })
+            }).catch((err) => {
+                if (err.response) {
+                    setValues({                              
+                        ...values,
+                        errorMsg: "Request failed...",
+                    });
+                }
+            });
         }
     }
+
+    const loadButton = <button className="article__comments-button" onClick={loadComments}>View Comments</button>
+    const hideButton = <button className="article__comments-button" onClick={hideComments}>Hide Comments</button>
 
     return (
         <>
         <section className="article__comments">
             <h4 className="article__comments-count">Comments: {comment_count + values.optimisticComments}</h4>
-            <button 
-                className="article__comments-view"
-                onClick={loadComments}
-            >
-                View Comments
-            </button>
+            <div className="article__comments-view">
+                {values.loadHide === "load"? <>{loadButton}</> : <>{hideButton}</>}
+            </div>
         </section>
         <section className="article__comments--loaded">
             {values.isLoading? <></> :
             <>
             <ul className="comment__list">
-                {values.commentObj.comments.map((comment)=>{
+                {values.commentObj.revComments.map((comment)=>{
                     const date = dayjs(comment.created_at);
                     const day = Number(date.$D);
                     const month = Number(date.$M) + 1;
@@ -88,12 +99,7 @@ export default function Comments ({ article_id, comment_count }) {
                     )
                 })}
             </ul>
-            <button 
-                className="article__comments-hide"
-                onClick={hideComments}
-            >
-                Hide Comments
-            </button>
+            {hideButton}
             </>
             }
         </section>
