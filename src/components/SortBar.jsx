@@ -1,8 +1,12 @@
+import SortedArticles from "./SortedArticles";
+
 export default function SortBar () {
 
+
     return (
+        <>
         <nav className="nav-sort">
-            <form action={'/articles'}>
+            <form>
                 <li>
                     <label htmlFor="sort_by"><h4>Sort All By: </h4></label>
                     <select
@@ -31,6 +35,8 @@ export default function SortBar () {
                 </li>
             </form>
         </nav>
+        <SortedArticles />
+        </>
     )
 
 }
