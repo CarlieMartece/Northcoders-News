@@ -4,6 +4,8 @@ const dayjs = require('dayjs');
 
 export default function Comments ({ article_id, comment_count }) {
 
+    const currentUser = "jessjelly"
+
     const initialValues = {
         optimisticComments: 0,
         commentObj: {},
@@ -51,7 +53,7 @@ export default function Comments ({ article_id, comment_count }) {
             });
         } else {
             event.preventDefault();
-            postComment(article_id, "jessjelly", values.newComment).then(()=>{
+            postComment(article_id, currentUser, values.newComment).then(()=>{
                 setValues({                              
                     ...values,
                     errorMsg: "",
@@ -92,9 +94,11 @@ export default function Comments ({ article_id, comment_count }) {
                     const year = Number(date.$y);
                     return (
                         <li className="article__comments-all" key={comment.comment_id}>
-                            <h4>{comment.author}, {day}/{month}/{year}</h4>
-                            <p>{comment.body}</p>
-                            <p>Votes: {comment.votes}</p>
+                            <h4 className="article__comments-author">{comment.author}, {day}/{month}/{year}</h4>
+                            <p className="article__comments-body">{comment.body}</p>
+                            <p className="article__comments-votes">Votes: {comment.votes}</p>
+                            <div className="article__comments-delete">{currentUser !== comment.author? <></> :
+                            <><button>Delete Comment</button></>}</div>
                         </li>
                     )
                 })}
