@@ -10,7 +10,6 @@ export default function Sorted () {
 
     const [isLoading, setIsLoading] = useState(true);
 
-    const topic = searchParams.get("topic");
     const sort = searchParams.get("sort_by");
     const order = searchParams.get("order_by");
 
@@ -20,7 +19,7 @@ export default function Sorted () {
             setSorted(articles);
             setIsLoading(false);
         });
-    },[sort]);
+    },[sort, order]);
 
     return (
         <main>
@@ -29,8 +28,8 @@ export default function Sorted () {
             <ul className="main__list">
                 {sorted.articles
                     .map((article)=>{
-                    let listImg = <img alt={topic} src={require(`../images/${article.topic}-icon-white.png`)} />
-
+                    const topic = article.topic;
+                    const listImg = <img alt={topic} src={require(`../images/${topic}-icon-white.png`)} />
                     return (
                         <ArticleCard 
                             key={article.article_id}
