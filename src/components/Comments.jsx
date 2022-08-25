@@ -1,4 +1,4 @@
-import { getComments, postComment } from "../api";
+import { getComments, postComment, deleteComment } from "../api";
 import { useState } from "react";
 const dayjs = require('dayjs');
 
@@ -72,6 +72,10 @@ export default function Comments ({ article_id, comment_count }) {
         }
     }
 
+    const handleCommentDelete = (event) => {
+        deleteComment(event.target.value);
+    }
+
     const loadButton = <button className="article__comments-button" onClick={loadComments}>View Comments</button>
     const hideButton = <button className="article__comments-button" onClick={hideComments}>Hide Comments</button>
 
@@ -98,7 +102,7 @@ export default function Comments ({ article_id, comment_count }) {
                             <p className="article__comments-body">{comment.body}</p>
                             <p className="article__comments-votes">Votes: {comment.votes}</p>
                             <div className="article__comments-delete">{currentUser !== comment.author? <></> :
-                            <><button>Delete Comment</button></>}</div>
+                            <><button value={comment.comment_id} onClick={handleCommentDelete}>Delete Comment</button></>}</div>
                         </li>
                     )
                 })}
