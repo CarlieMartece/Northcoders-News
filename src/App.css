@@ -126,12 +126,18 @@ main {
 }
 
 .nav-selector {
-  font-size: large;
+  font-size: 1em;
 }
 
 .nav-sort {
   background-color:midnightblue;
   grid-area: 3 / 1 / 4 / 3;
+}
+
+.nav-sort h4 {
+  display: inline;
+  float: left;
+  margin: 0 5px;
 }
 
 .nav-sort li {

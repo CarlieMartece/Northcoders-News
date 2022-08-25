@@ -4,7 +4,7 @@ export default function SortBar () {
         <nav className="nav-sort">
             <form action={'/articles'}>
                 <li>
-                    <label htmlFor="sort_by">Sort Topics: </label>
+                    <label htmlFor="sort_by"><h4>Sort All By: </h4></label>
                     <select
                         id="sort_by"
                         name="sort_by"
@@ -17,7 +17,7 @@ export default function SortBar () {
                     </select>
                 </li>
                 <li>
-                    <label htmlFor="order_by">Order: </label>
+                    <label htmlFor="order_by"></label>
                     <select
                         id="order_by"
                         name="order_by"
