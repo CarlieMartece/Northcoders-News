@@ -11,7 +11,7 @@ export default function NavBar () {
 
     return (
         <nav className="nav-topics">
-            <h2>Browse Topics: </h2>
+            <h3>Browse Topics: </h3>
             {navOptions.map((option) => {
                 return (
                     <Link className="nav__link" to={option[0]} key={option[1]}>

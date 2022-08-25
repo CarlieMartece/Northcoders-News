@@ -7,7 +7,8 @@ export default function ArticleCard ({
     img,
     title,
     author,
-    created
+    created,
+    votes
 }) {
     
     const date = dayjs(created);
@@ -21,6 +22,7 @@ export default function ArticleCard ({
                 <div className="main__list-card">
                     <div className="main__list-img">{img}</div>
                     <div className="main__list-title"><h4>{title}</h4></div>
+                    <div className="main__list-votes"><p>Votes: {votes}</p></div>
                     <div className="main__list-info"><p>By {author} on {day}/{month}/{year}</p></div>  
                 </div>
             </li>

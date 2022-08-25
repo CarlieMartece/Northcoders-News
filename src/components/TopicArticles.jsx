@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { fetchTopic } from "../api";
 import ArticleCard from "./ArticleCard";
 
-export default function Topic () {
+export default function TopicArticles () {
 
     const { topic } = useParams();
     const [collection, setCollection] = useState([]);
@@ -32,6 +32,7 @@ export default function Topic () {
                             title={article.title}
                             author={article.author}
                             created={article.created_at}
+                            votes={article.votes}
                             img={listImg}
                         />
                     )

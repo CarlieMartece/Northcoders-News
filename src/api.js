@@ -3,8 +3,8 @@ const api = axios.create({
     baseURL: "https://nookas-news.herokuapp.com/api"
 }) 
 
-export const fetchArticles = () => {
-    return api.get('/articles')
+export const fetchArticles = (sort, order) => {
+    return api.get('/articles', { params: { sort_by: sort, order_by: order } })
         .then((res) => {
             return res.data;
         });

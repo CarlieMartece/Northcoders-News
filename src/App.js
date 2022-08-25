@@ -3,8 +3,9 @@ import './App.css';
 import Title from "./components/Title";
 import UserBar from "./components/UserBar";
 import NavBar from "./components/NavBar";
-import AllArticles from "./components/AllArticles.jsx";
-import Topic from "./components/Topic";
+import SortBar from "./components/SortBar";
+import SortedArticles from "./components/SortedArticles";
+import TopicArticles from "./components/TopicArticles";
 import SingleArticle from "./components/SingleArticle";
 
 
@@ -15,9 +16,10 @@ function App() {
         <Title />
         <UserBar />
         <NavBar />
+        <SortBar />
         <Routes>
-          <Route path="/" element={<AllArticles />} />
-          <Route path="/articles/topics/:topic" element={<Topic />} />
+          <Route path="/" element={<SortedArticles />} />
+          <Route path="/articles/topics/:topic" element={<TopicArticles />} />
           <Route path="/articles/:article_id" element={<SingleArticle />} />
         </Routes>
       </div>
