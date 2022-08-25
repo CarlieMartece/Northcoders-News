@@ -1,6 +1,6 @@
-import { getComments, postComment, deleteComment } from "../api";
+import CommentCard from "./CommentCard";
+import { getComments, postComment } from "../api";
 import { useState } from "react";
-const dayjs = require('dayjs');
 
 export default function Comments ({ article_id, comment_count }) {
 
@@ -13,7 +13,7 @@ export default function Comments ({ article_id, comment_count }) {
         newComment: undefined,
         errorMsg: '',
         submitMsg: '',
-        loadHide: 'load'
+        loadHide: 'load',
     };
     const [values, setValues] = useState(initialValues);
 
@@ -72,10 +72,6 @@ export default function Comments ({ article_id, comment_count }) {
         }
     }
 
-    const handleCommentDelete = (event) => {
-        deleteComment(event.target.value);
-    }
-
     const loadButton = <button className="article__comments-button" onClick={loadComments}>View Comments</button>
     const hideButton = <button className="article__comments-button" onClick={hideComments}>Hide Comments</button>
 
@@ -92,18 +88,15 @@ export default function Comments ({ article_id, comment_count }) {
             <>
             <ul className="comment__list">
                 {values.commentObj.revComments.map((comment)=>{
-                    const date = dayjs(comment.created_at);
-                    const day = Number(date.$D);
-                    const month = Number(date.$M) + 1;
-                    const year = Number(date.$y);
                     return (
-                        <li className="article__comments-all" key={comment.comment_id}>
-                            <h4 className="article__comments-author">{comment.author}, {day}/{month}/{year}</h4>
-                            <p className="article__comments-body">{comment.body}</p>
-                            <p className="article__comments-votes">Votes: {comment.votes}</p>
-                            <div className="article__comments-delete">{currentUser !== comment.author? <></> :
-                            <><button value={comment.comment_id} onClick={handleCommentDelete}>Delete Comment</button></>}</div>
-                        </li>
+                        <CommentCard 
+                            key={comment.comment_id}
+                            commentId={comment.comment_id}
+                            author={comment.author}
+                            created={comment.created_at}
+                            body={comment.body}
+                            votes={comment.votes}
+                        />
                     )
                 })}
             </ul>
