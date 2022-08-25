@@ -39,6 +39,26 @@ a:link, a:visited {
   float: none;
 }
 
+.article__comments--loaded {
+  margin-bottom: 20px;
+}
+
+.article__comment-form label, textarea {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.article__comment-form textarea {
+  background-color: rgb(31, 0, 42);
+  color: white;
+  height: 80px;
+  width: 80%;
+}
+
+.article__comment-submitted {
+  color: gray;
+}
+
 .article__votes {
   display: grid;
   grid-column-gap: 10px;
