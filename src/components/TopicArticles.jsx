@@ -1,24 +1,35 @@
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchTopic } from "../api";
 import ArticleCard from "./ArticleCard";
+import ErrorPage from "./ErrorPage";
 
 export default function TopicArticles () {
 
     const { topic } = useParams();
     const [collection, setCollection] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
+
+    const [searchParams, setSearchParams] = useSearchParams();
+    const sort = searchParams.get("sort_by") || "created_at";
+    const order = searchParams.get("order_by") || "DESC";
 
     useEffect(()=>{
-        fetchTopic(topic)
+        fetchTopic(topic, sort, order)
           .then((items) => {
             setCollection(items);
             setIsLoading(false);
-          });
-    },[topic]);
+          }).catch((err)=>{
+            if(err.response) {
+                setIsError(true);
+            }
+          })
+    },[topic, sort, order]);
 
     return (
         <main>
+            {isError? <ErrorPage/> : <>
             {isLoading? <h3>Loading...</h3> :
             <>
             <ul className="main__list">
@@ -38,8 +49,8 @@ export default function TopicArticles () {
                     )
                 })}
             </ul>
-            </>
-            }
+            </>}
+            </>}
         </main> 
     )
 
