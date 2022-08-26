@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+<a name="readme-top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br />
+<div align="center">
+    <a href="https://github.com/CarlieMartece/nc-news">
+    <img src="src/images/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-## Available Scripts
+<h3 align="center">Nooka's News</h3>
 
-In the project directory, you can run:
+  <p align="center">
+    Very Important Articles
+    <br />
+    <a href="https://github.com/CarlieMartece/nc-news"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/CarlieMartece/nc-news">View Demo</a>
+    ·
+    <a href="https://github.com/CarlieMartece/nc-news/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/CarlieMartece/nc-news/issues">Request Feature</a>
+  </p>
+</div>
 
-### `npm start`
+## About The Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[![Product Name Screen Shot][product-screenshot]](https://nookasnews.netlify.app/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This is the front-end repo for Nooka's News.<br />
 
-### `npm test`
+The back-end repo for this app can be found <a href="https://github.com/CarlieMartece/Northcoders-News-API">here</a><br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This app lets you share articles about:<br />
+* Coding! Our favourite subject
+* Cooking! Because who doesn't love food?
+* Football (Sorry about this)
 
-### `npm run build`
+The main user features so far are:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Browse articles by topic
+* Sort articles by Date, Title, Topic, Author and Votes
+* UpVote or DownVote and article
+* View or hide and article's comments
+* Add comments (of at least fifty characters to an article
+* Delete your comments from an article
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Built With
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* [![React][React.js]][React-url]
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To get a local copy up and running follow these simple example steps.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Prerequisites
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* node v16.15.0
 
-## Learn More
+### Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Clone the repo
+   ```sh
+   git clone https://github.com/CarlieMartece/nc-news.git
+   ```
+2. cd into repo
+   ```sh
+   cd nc-news
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Run project
+   ```sh
+   npm start
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Making Changes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Create a new branch
+   ```sh
+   git checkout -b <new_branch_name>
+   ```
+2. Add new code. Suggested changes are:
 
-### Analyzing the Bundle Size
+* Tidy up CSS page
+* Add a UserLogin component and keeping logged in user in context
+* Update styling with regards to improved accessibility
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. Upload new branch
+   ```sh
+   git push origin <branch_name>
+   ```
 
-### Making a Progressive Web App
+4. Create pull request and check for potential merge conflicts.
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Acknowledgments
 
-### Advanced Configuration
+* This app was made possible by the awesome team at Northcoders!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+[product-screenshot]: src/images/screenshot.png
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
