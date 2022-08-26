@@ -10,8 +10,8 @@ export const fetchArticles = (sort, order) => {
         });
 };
 
-export const fetchTopic = (topic) => {
-    return api.get(`/articles?topic=${topic}`)
+export const fetchTopic = (topic, sort, order) => {
+    return api.get(`/articles?topic=${topic}`, { params: { sort_by: sort, order_by: order } })
         .then((res) => {
             return res.data;
         });

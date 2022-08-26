@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchTopic } from "../api";
 import ArticleCard from "./ArticleCard";
@@ -9,13 +9,17 @@ export default function TopicArticles () {
     const [collection, setCollection] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const [searchParams, setSearchParams] = useSearchParams();
+    const sort = searchParams.get("sort_by") || "created_at";
+    const order = searchParams.get("order_by") || "DESC";
+
     useEffect(()=>{
-        fetchTopic(topic)
+        fetchTopic(topic, sort, order)
           .then((items) => {
             setCollection(items);
             setIsLoading(false);
           });
-    },[topic]);
+    },[topic, sort, order]);
 
     return (
         <main>
