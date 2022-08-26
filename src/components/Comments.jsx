@@ -1,8 +1,10 @@
+import CommentCard from "./CommentCard";
 import { getComments, postComment } from "../api";
 import { useState } from "react";
-const dayjs = require('dayjs');
 
 export default function Comments ({ article_id, comment_count }) {
+
+    const currentUser = "jessjelly"
 
     const initialValues = {
         optimisticComments: 0,
@@ -11,7 +13,7 @@ export default function Comments ({ article_id, comment_count }) {
         newComment: undefined,
         errorMsg: '',
         submitMsg: '',
-        loadHide: 'load'
+        loadHide: 'load',
     };
     const [values, setValues] = useState(initialValues);
 
@@ -51,7 +53,7 @@ export default function Comments ({ article_id, comment_count }) {
             });
         } else {
             event.preventDefault();
-            postComment(article_id, "jessjelly", values.newComment).then(()=>{
+            postComment(article_id, currentUser, values.newComment).then(()=>{
                 setValues({                              
                     ...values,
                     errorMsg: "",
@@ -86,16 +88,15 @@ export default function Comments ({ article_id, comment_count }) {
             <>
             <ul className="comment__list">
                 {values.commentObj.revComments.map((comment)=>{
-                    const date = dayjs(comment.created_at);
-                    const day = Number(date.$D);
-                    const month = Number(date.$M) + 1;
-                    const year = Number(date.$y);
                     return (
-                        <li className="article__comments-all" key={comment.comment_id}>
-                            <h4>{comment.author}, {day}/{month}/{year}</h4>
-                            <p>{comment.body}</p>
-                            <p>Votes: {comment.votes}</p>
-                        </li>
+                        <CommentCard 
+                            key={comment.comment_id}
+                            commentId={comment.comment_id}
+                            author={comment.author}
+                            created={comment.created_at}
+                            body={comment.body}
+                            votes={comment.votes}
+                        />
                     )
                 })}
             </ul>
