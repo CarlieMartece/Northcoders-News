@@ -51,7 +51,15 @@ export default function Comments ({ article_id, comment_count }) {
                 submitMsg: "",
                 errorMsg: "Cannot send blank comment!"
             });
-        } else {
+        } else if (values.newComment.length < 50) {
+            event.preventDefault();
+            setValues({                              
+                ...values,
+                submitMsg: "",
+                errorMsg: "Comment must be at least 50 characters."
+            });
+        }
+        else {
             event.preventDefault();
             postComment(article_id, currentUser, values.newComment).then(()=>{
                 setValues({                              
