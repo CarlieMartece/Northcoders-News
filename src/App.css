@@ -116,6 +116,10 @@ a:link, a:visited {
   margin-bottom: 20px;
 }
 
+.error__img {
+  max-width: 90vw;
+}
+
 li {
   list-style: none;
 }

@@ -3,6 +3,7 @@ import Comments from "./Comments";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchSingleArticle } from "../api";
+import ErrorPage from "./ErrorPage";
 const dayjs = require('dayjs');
 
 export default function SingleArticle () {
@@ -10,11 +11,16 @@ export default function SingleArticle () {
     const { article_id } = useParams();
     const [collection, setCollection] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
     
     useEffect(()=>{
         fetchSingleArticle(article_id).then((article)=>{
             setCollection(article);
             setIsLoading(false);
+        }).catch((err)=>{
+            if(err.response) {
+                setIsError(true);
+            }
         })
     },[article_id]);
 
@@ -35,6 +41,7 @@ export default function SingleArticle () {
 
     return (
         <main>
+            {isError? <ErrorPage/> : <>
             {isLoading? <h3>Loading...</h3> :
             <>
             <article className="main__article">
@@ -44,6 +51,7 @@ export default function SingleArticle () {
                 <Votes votes={votes} article_id={article_id} />
                 <Comments comment_count={comment_count} article_id={article_id} />
             </article>
+            </>}
             </>}
         </main>
     );
