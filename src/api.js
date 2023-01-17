@@ -1,6 +1,6 @@
 import axios from "axios";
 const api = axios.create({
-    baseURL: "https://nookas-news.herokuapp.com/api"
+    baseURL: "https://nookas-news.onrender.com"
 }) 
 
 export const fetchArticles = (sort, order) => {
